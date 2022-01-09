@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CoLiving</title>
+        <link rel="stylesheet" href="style.css">
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Quicksand&family=Work+Sans:wght@200&display=swap" rel="stylesheet">   
+<style>
+     header{
+            background: rgb(112,189,213);
+            padding: 30px 40px;
+            color: white;
+            text-align:center;
+            }
+            body{
+                font-size: 20px;  
+                color: black;
+            }
+            h1 {
+                padding-bottom: 60px; 
+                background: rgb(112,189,213);
+                color: white;}
+            #myForm{
+                display: none;
+                border: 6px solid rgb(231, 159, 146);
+                border-radius: 12px;
+                background-color: rgb(231, 159, 146);
+                margin-right: 20px;
+                margin-left: 20px;
+            }
+            #greeting{
+                display: none;
+                
+                
+            }
+        
+</style>
+    </head>
+
+<body>
+<h1>welcome to your personal co-living page!</h1>
+
+    <div class="navbar">
+        <a href="welcome.html">home</a>
+        <a href="chores.html">chores</a>
+        <a href="billsplit.html">split bills</a>
+        <a href="groceryList.html">groceries</a>
+
+</div>
+<center><p style= "color:cadetblue; "><br/><br/>
+   on your co-living page, you can accomplish all your day-to-day tasks.
+    <br/><br/>
+</p></center>
+<h2 id= 'signInMessage'><center>sign in below to begin</center></h2>
+
+
+
+<div class="openBtn">
+  <center><button id='login' class="openButton" onclick="openForm(); hideButton(this)" style="background-color:rgb(124, 196, 196); border-color:dimgray; color:black; ">sign in</button></center>
+</div>
+
+<div class= "loginPopup" >
+    <iframe name="hiddenFrame" class="hide" style="width: 0; height:0;padding:0; background-color:white;"></iframe>
+   
+    <form id="myForm" action= "receiver.pl" target="hiddenFrame" class="formContainer" method="post">
+        <p><b>sign in</b></p>
+       
+    <label for="username"><b>username</b></label>    
+    <input id='usr' type="text" placeholder="enter username" name="username" required/>
+    
+
+    <label for="psw"><b>password</b></label>    
+    <input id='pass' type="password" placeholder="enter password" name="psw" required/>
+     
+
+        <button type="submit" class="btn"  onclick= "closeFormCondition(); openGreeting(); closeSignIn()">submit</button>
+        <button type="button" class="btn cancel" onclick="closeForm(); showButton()">close</button>
+    </form>
+    <form id="greeting" method="post" style="color:rgb(124, 196, 196); font-size: 60px;"><b><center>hello!
+    </center></b>
+    </form>
+
+</div>
+<script>function openForm() {
+    document.getElementById('myForm').style.display = 'block';
+  }
+  
+  function closeForm() {
+    document.getElementById('myForm').style.display = 'none';
+  }
+  function closeFormCondition(){
+      if(document.getElementById('usr').value!=''&& document.getElementById('pass').value!=''){
+        document.getElementById('myForm').style.display = 'none';}
+  }
+function hideButton(x){
+    x.style.display='none';
+}
+function showButton(){
+    document.getElementById('login').style.display='';
+}
+function openGreeting(){
+    if(document.getElementById('usr').value!=''&& document.getElementById('pass').value!=''){
+    document.getElementById('greeting').style.display='block';}
+}
+function closeSignIn(){
+    if(document.getElementById('usr').value!=''&& document.getElementById('pass').value!=''){
+    document.getElementById('signInMessage').style.display= 'none';}
+}
+
+
+
+</script>
+
+</body>
+
+</html>
